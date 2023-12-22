@@ -22,9 +22,10 @@ constructor(private router: Router , private ps : ProductsServices) { }
   }
 
 
-detail(id: number):void{
-  this.router.navigate(['/product/:id', id]);
-}
+  detail(id: number):void{
+    console.log("clicked",id);
+    this.router.navigateByUrl('/products/pp/'+id);
+  }
 }
 
 

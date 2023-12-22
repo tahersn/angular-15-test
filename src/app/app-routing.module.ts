@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {ProductComponent} from './products/product/product.component';
+import {ProductsListComponent} from './products/products-list/products-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full'},
-  {path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)},
+  {path:'products',component:ProductsListComponent},
+  {path: 'products/pp/:id', component:ProductComponent},
   {path: '**', redirectTo: 'products', pathMatch: 'full'}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
+  
 })
+
 export class AppRoutingModule { }

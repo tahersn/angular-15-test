@@ -10,12 +10,12 @@
     </thead>
     <tbody>
         <tr *ngFor="let product of products"  style="cursor: pointer;">
-        <td>{{ product.name }}</td>
+        <td >{{ product.name }}</td>
         <td>{{ product.price }}</td>
         <td>{{ product.isAvailable }}</td>
         <td>
-            <a href="#" [routerLink]="['/product',product.id,'detail']" class="btn btn-info">View</a>
-            <button >Delete</button>
+            <a [routerLink]="['/products/pp/',product.id]" class="btn btn-info">View</a>
+                        <button (click)="detail(product.id)">Delete</button>
         </td>
         </tr>
     </tbody>
