@@ -1,0 +1,22 @@
+<p>products-list works!</p>
+<table>
+    <thead>
+        <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products"  style="cursor: pointer;">
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.isAvailable }}</td>
+        <td>
+            <a href="#" [routerLink]="['/product',product.id,'detail']" class="btn btn-info">View</a>
+            <button >Delete</button>
+        </td>
+        </tr>
+    </tbody>
+</table>
