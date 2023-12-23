@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../Modele/Product';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsServices}  from '../Modele/services';
@@ -11,11 +11,11 @@ import { ProductsServices}  from '../Modele/services';
 export class ProductComponent implements OnInit  {
   constructor(private route: ActivatedRoute,private prductsservice : ProductsServices) { }
   product!: Product|undefined;
+  @Input() message!: '';
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id')!;
       this.product = this.prductsservice.getProduct(id);
     });
   }
-
 }

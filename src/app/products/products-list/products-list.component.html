@@ -1,5 +1,14 @@
 <p>products-list works!</p>
-<table>
+<app-propstest [message]="propmessage" (newMessageEvent)="show($event)"></app-propstest>
+<div *ngIf="showAlert" class="alert alert-success" role="alert">
+    Product deleted successfully!
+</div>
+
+<div *ngIf="incoming">
+    <p class="text-danger">{{incoming}}</p>
+  </div>
+
+<table class="table">
     <thead>
         <tr>
         <th>Product</th>
@@ -13,10 +22,13 @@
         <td >{{ product.name }}</td>
         <td>{{ product.price }}</td>
         <td>{{ product.isAvailable }}</td>
-        <td>
+        <td class="d-flex justify-content-around">
             <a [routerLink]="['/products/pp/',product.id]" class="btn btn-info">View</a>
-                        <button (click)="detail(product.id)">Delete</button>
+                        <button (click)="detail(product.id)" class="btn btn-primary">details</button>
+                        <button (click)="edit(product.id)" class="btn btn-warning">edit</button>
+                        <button  (click)="delete(product.id)" class="btn btn-danger">delete</button>
         </td>
         </tr>
     </tbody>
 </table>
+
