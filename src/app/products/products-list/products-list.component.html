@@ -1,13 +1,8 @@
 <p>products-list works!</p>
-<app-propstest [message]="propmessage" (newMessageEvent)="show($event)"></app-propstest>
+<app-propstest [message]="propmessage" ></app-propstest>
 <div *ngIf="showAlert" class="alert alert-success" role="alert">
     Product deleted successfully!
 </div>
-
-<div *ngIf="incoming">
-    <p class="text-danger">{{incoming}}</p>
-  </div>
-
 <table class="table">
     <thead>
         <tr>

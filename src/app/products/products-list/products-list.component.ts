@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Product } from '../Modele/Product';
 import {Router} from '@angular/router';
 import { OnInit } from '@angular/core';
-import {ProductsServices} from '../Modele/services';
+import {ProductsService} from '../Modele/services';
 import { RouterLink } from '@angular/router';
 
 
@@ -14,14 +14,17 @@ import { RouterLink } from '@angular/router';
 
 
 export class ProductsListComponent implements OnInit {
-constructor(private router: Router , private ps : ProductsServices) { }
- products!: Product[];
+constructor(private router: Router , private ps : ProductsService) { }
+ products: Product[]=[];
   showAlert = false;
   incoming='';
   propmessage="this is props";
- ngOnInit(): void {
-  this.products = this.ps.getProducts();
-
+  async ngOnInit() {
+    try {
+      this.products = await this.ps.getProducts();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
 
@@ -34,7 +37,7 @@ constructor(private router: Router , private ps : ProductsServices) { }
     this.router.navigateByUrl('/products/edit/'+id);
   }
   delete(id:number):void{
-    this.ps.deleteProduct(id);
+    //this.ps.deleteProduct(id);
     this.showAlert = true;
 
     // Hide the alert after a few seconds (e.g., 3 seconds)
